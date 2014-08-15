@@ -358,7 +358,7 @@ def get_participant(request, restrict=True):
     if participant.claimed_time is None:
 
         # This is a stub participant record for someone on another platform who
-        # hasn't actually registered with Gittip yet. Let's bounce the viewer
+        # hasn't actually registered with Gratipay yet. Let's bounce the viewer
         # over to the appropriate platform page.
 
         to = participant.resolve_unclaimed()
@@ -386,7 +386,7 @@ def update_global_stats(website):
     nbackers = website.db.one("""
         SELECT npatrons
           FROM participants
-         WHERE username = 'Gittip'
+         WHERE username = 'Gratipay'
     """)
     website.support_current = cur = int(round(nbackers / stats[0] * 100)) if stats[0] else 0
     if cur < 10:    goal = 20

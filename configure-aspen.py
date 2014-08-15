@@ -95,7 +95,7 @@ cron(env.check_db_every, website.db.self_check)
 def add_stuff_to_context(request):
     request.context['username'] = None
 
-    # Helpers for global call to action to support Gittip itself.
+    # Helpers for global call to action to support Gratipay itself.
     user = request.context.get('user')
     p = user.participant if user else None
     if p and p.is_free_rider is None:

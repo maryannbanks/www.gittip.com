@@ -472,14 +472,14 @@ class Tests(Harness):
 
     def test_stt_sets_is_free_rider_to_false(self):
         alice = self.make_participant('alice', claimed_time='now', last_bill_result='')
-        gittip = self.make_participant('Gittip', number='plural')
+        gittip = self.make_participant('Gratipay', number='plural')
         alice.set_tip_to(gittip, '0.01')
         assert alice.is_free_rider is False
         assert Participant.from_username('alice').is_free_rider is False
 
     def test_stt_resets_is_free_rider_to_null(self):
         alice = self.make_participant('alice', claimed_time='now', last_bill_result='')
-        gittip = self.make_participant('Gittip', number='plural')
+        gittip = self.make_participant('Gratipay', number='plural')
         alice.set_tip_to(gittip, '0.00')
         assert alice.is_free_rider is None
         assert Participant.from_username('alice').is_free_rider is None

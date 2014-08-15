@@ -33,7 +33,7 @@ title = _("Credit Card")
 {% block heading %}
     <h1>{{ _("Your credit card is {0}%s{1}" % status).format("<em id=\"status\">", "</em>") }}</h1>
 
-    <p>{{ _("When you don't have enough money in your Gittip account to cover your gifts, we'll attempt to pull money in using your credit card.") }}
+    <p>{{ _("When you don't have enough money in your Gratipay account to cover your gifts, we'll attempt to pull money in using your credit card.") }}
     {{ _("If your credit card is missing or fails then your gifts won't go through for that week.") }}<p>
 
 {% endblock %}
@@ -44,7 +44,7 @@ title = _("Credit Card")
 <script>
     $(document).ready(function()
     {
-        Gittip.payments.cc.init("{{ balanced.Marketplace.my_marketplace.uri }}", "{{ user.participant.username }}");
+        Gratipay.payments.cc.init("{{ balanced.Marketplace.my_marketplace.uri }}", "{{ user.participant.username }}");
         $('#country').chosen();
     });
 </script>

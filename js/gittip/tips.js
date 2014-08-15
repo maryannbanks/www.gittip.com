@@ -1,6 +1,6 @@
-Gittip.tips = {};
+Gratipay.tips = {};
 
-Gittip.tips.init = function() {
+Gratipay.tips.init = function() {
 
     // Check the tip value on change, or 0.7 seconds after the user stops typing.
     // If the user presses enter, the browser should natively submit the form.
@@ -105,9 +105,9 @@ Gittip.tips.init = function() {
             return;
 
         if(isAnon)
-            Gittip.notification("Please sign in first", 'error');
+            Gratipay.notification("Please sign in first", 'error');
         else
-            Gittip.tips.set(tippee, amount, function() {
+            Gratipay.tips.set(tippee, amount, function() {
                 // lock-in changes
                 $myTip[0].defaultValue = amount;
                 $myTip.change();
@@ -119,29 +119,29 @@ Gittip.tips.init = function() {
                         parseInt($('.on-elsewhere .ready .number').text(),10) + 1);
 
                 // Use global notification system.
-                Gittip.notification("Tip changed to $" + amount.toFixed(2) + "!", 'success');
+                Gratipay.notification("Tip changed to $" + amount.toFixed(2) + "!", 'success');
             });
     });
 };
 
 
-Gittip.tips.initSupportGittip = function() {
+Gratipay.tips.initSupportGratipay = function() {
     $('.support-gittip button').click(function() {
         var amount = parseFloat($(this).attr('data-amount'), 10);
-        Gittip.tips.set('Gittip', amount, function() {
-            Gittip.notification("Thank you so much for supporting Gittip! :D", 'success');
+        Gratipay.tips.set('Gratipay', amount, function() {
+            Gratipay.notification("Thank you so much for supporting Gratipay! :D", 'success');
             $('.support-gittip').slideUp();
 
             // If you're on your own giving page ...
-            var tip_on_giving = $('.my-tip[data-tippee="Gittip"]');
+            var tip_on_giving = $('.my-tip[data-tippee="Gratipay"]');
             if (tip_on_giving.length > 0) {
                 tip_on_giving[0].defaultValue = amount;
                 tip_on_giving.attr('value', amount.toFixed(2));
             }
 
-            // If you're on Gittip's profile page or your own profile page,
+            // If you're on Gratipay's profile page or your own profile page,
             // updating the proper giving/receiving amounts is apparently taken
-            // care of in Gittip.tips.set.
+            // care of in Gratipay.tips.set.
 
         });
     });
@@ -150,12 +150,12 @@ Gittip.tips.initSupportGittip = function() {
         event.preventDefault();
         jQuery.post('/ride-free.json')
             .success(function() { $('.support-gittip').slideUp(); })
-            .fail(function() { Gittip.notification("Sorry, there was an error.", "failure"); })
+            .fail(function() { Gratipay.notification("Sorry, there was an error.", "failure"); })
     });
 };
 
 
-Gittip.tips.set = function(tippee, amount, callback) {
+Gratipay.tips.set = function(tippee, amount, callback) {
 
     // send request to change tip
     $.post('/' + tippee + '/tip.json', { amount: amount }, function(data) {
@@ -172,7 +172,7 @@ Gittip.tips.set = function(tippee, amount, callback) {
         $('.quick-stats a').text('$' + data.total_giving + '/wk');
     })
     .fail(function() {
-        Gittip.notification('Sorry, something went wrong while changing your tip. :(', 'error');
+        Gratipay.notification('Sorry, something went wrong while changing your tip. :(', 'error');
         console.log.apply(console, arguments);
     });
 };

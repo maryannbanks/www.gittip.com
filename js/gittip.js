@@ -3,18 +3,18 @@
  * Individual modules are in the gittip/ directory.
  */
 
-Gittip = {};
+Gratipay = {};
 
-Gittip.getCookie = function(key) {
+Gratipay.getCookie = function(key) {
     var o = new RegExp("(?:^|; ?)" + escape(key) + "=([^;]+)").exec(document.cookie);
     return o && unescape(o[1]);
 }
 
-Gittip.init = function() {
-    Gittip.forms.initCSRF();
-    Gittip.signIn();
-    Gittip.signOut();
-    Gittip.tips.initSupportGittip();
+Gratipay.init = function() {
+    Gratipay.forms.initCSRF();
+    Gratipay.signIn();
+    Gratipay.signOut();
+    Gratipay.tips.initSupportGratipay();
 };
 
 
@@ -22,12 +22,12 @@ Gittip.init = function() {
 // ===================
 // yanked from gttp.co/v1/api.js
 
-Gittip.each = function(a, fn) {
+Gratipay.each = function(a, fn) {
     for (var i=0; i<a.length; i++)
         fn(a[i], i, length);
 };
 
-Gittip.jsoncss = function(jsoncss) {
+Gratipay.jsoncss = function(jsoncss) {
     var out = '';
 
     this.each(jsoncss, function(selector) {
@@ -47,7 +47,7 @@ Gittip.jsoncss = function(jsoncss) {
     return this.jsonml(['style', out]);
 };
 
-Gittip.jsonml = function(jsonml) {
+Gratipay.jsonml = function(jsonml) {
     var node  = document.createElement(jsonml[0]),
         _     = this;
 
@@ -73,7 +73,7 @@ Gittip.jsonml = function(jsonml) {
     return node;
 };
 
-Gittip.signIn = function() {
+Gratipay.signIn = function() {
     $('.sign-in > .dropdown').mouseenter(function(e) {
         clearTimeout($(this).data('timeoutId'));
         $(this).addClass('open');
@@ -101,7 +101,7 @@ Gittip.signIn = function() {
     });
 };
 
-Gittip.signOut = function() {
+Gratipay.signOut = function() {
     $('a#sign-out').click(function(e) {
         e.preventDefault();
 
@@ -112,7 +112,7 @@ Gittip.signOut = function() {
                 window.location.href = window.location.href;
             },
             error: function() {
-                Gittip.notification('Failed to sign out', 'error');
+                Gratipay.notification('Failed to sign out', 'error');
             }
         });
     });

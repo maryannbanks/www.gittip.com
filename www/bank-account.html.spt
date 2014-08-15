@@ -34,8 +34,8 @@ title = _("Bank Account")
 
     <h1>{{ status }}</h1>
 
-    <p>{{ _("When you receive money on Gittip we'll automatically deposit it into your bank account.") }}
-    {{ _("If you don't connect a bank account then your money will accumulate within Gittip unless you regift it to others.") }}<p>
+    <p>{{ _("When you receive money on Gratipay we'll automatically deposit it into your bank account.") }}
+    {{ _("If you don't connect a bank account then your money will accumulate within Gratipay unless you regift it to others.") }}<p>
 
 {% endblock %}
 
@@ -45,7 +45,7 @@ title = _("Bank Account")
 <script>
     $(document).ready(function()
     {
-        Gittip.payments.ba.init("{{ balanced.Marketplace.my_marketplace.uri }}", "{{ user.participant.username }}");
+        Gratipay.payments.ba.init("{{ balanced.Marketplace.my_marketplace.uri }}", "{{ user.participant.username }}");
     });
 </script>
 {% endif %}
