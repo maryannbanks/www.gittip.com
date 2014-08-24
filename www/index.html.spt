@@ -91,7 +91,7 @@ from aspen.utils import utcnow
         {% set quick = utcnow() - timedelta(seconds=15)  %}
         {% if user.participant.claimed_time > quick %}
             <h1>{{ _("Welcome, {0}!", user.participant.username) }}</h1>
-            <p>{{ _("Thanks for joining Gittip!") }}</p>
+            <p>{{ _("Thanks for joining Gratipay!") }}</p>
             <p>{{ _("Next steps:") }}</p>
             <ol>
                 <li>{{ _("Start tipping people, you can find great people to tip by browsing {0}our communities{1}.",
